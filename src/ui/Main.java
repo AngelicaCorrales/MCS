@@ -103,6 +103,12 @@ public class Main{
 
 	}
 	public void showRegisteredUsers(){
+		sc.nextLine();
+		System.out.println("-----------------------------------------------------------");
+		System.out.println("MOSTRAR USUARIOS REGISTRADOS \n");
+        String list=mcs.showUsers();
+        System.out.println(list);
+        System.out.println("-----------------------------------------------------------");
 
 	}
 

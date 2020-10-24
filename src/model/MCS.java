@@ -14,6 +14,30 @@ public class MCS{
 		playlists= new Playlist[MAX_PLAYLISTS];
 	}
 
+	public User[] getUsers(){
+		return users;
+	}
+
+	public void setUsers(User[] users){
+		this.users=users;
+	}
+
+	public Song[] getSongs(){
+		return poolSongs;
+	}
+
+	public void setSongs(Song[] songs){
+		this.songs=songs;
+	}
+
+	public Playlist[] getPlaylists(){
+		return playlists;
+	}
+
+	public void setPlaylists(Playlist[] playlists){
+		this.playlists=playlists;
+	}
+
 	public String createUser(String userName, String password, int age){
 		String message="El usuario ha sido registrado exitosamente";
 		boolean exit=false;
@@ -50,8 +74,25 @@ public class MCS{
 	
 	}
 
-	public void showUsers(){
-
+	public String showUsers(){
+		String userList="";
+		control=false;
+		for(int i=0; i<users.length && !control; i++){
+			if(users[i]!=null){
+				userList+="*************  User **************\n"+
+				"**  UserName: "+users[i].getUserName()+"\n"+
+				"**  Age: "+users[i].getAge()+"\n"+                      
+				"**  Category:" users.getCategory().name()+"\n"+
+				"**********************************\n \n";
+			}
+			else{
+				control=true;
+			}
+		}
+		if (users[0]==null){
+			userList="Aun no se han registrado usuarios";
+		}
+		return userList;
 	}
 
 	public void createSong(){
