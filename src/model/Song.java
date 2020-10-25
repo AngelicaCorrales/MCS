@@ -58,4 +58,17 @@ public class Song{
 	public void setGenre(Genre genre){
 		this.genre=genre;
 	}
+
+	public String durationToString(){
+		String time;
+		time=duration[0]+":"+duration[1];
+		return time;
+	}
+
+	public String genreToString(){
+		String genrex;
+		genrex=genre.name();
+		return genrex;
+	}
+
 }

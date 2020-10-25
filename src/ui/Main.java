@@ -183,7 +183,7 @@ public class Main{
 	public void showSongs(){
 		System.out.println("-----------------------------------------------------------");
 		System.out.println("MOSTRAR CANCIONES EN EL POOL DE CANCIONES COMPARTIDAS \n");
-        String list=mcs.showUsers();
+        String list=mcs.showPoolSongs();
         System.out.println(list);
         System.out.println("-----------------------------------------------------------");
 

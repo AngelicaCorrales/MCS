@@ -90,7 +90,7 @@ public class MCS{
 				userList+="*************  User **************\n"+
 				"**  UserName: "+users[i].getUserName()+"\n"+
 				"**  Age: "+users[i].getAge()+"\n"+                      
-				"**  Category:" users.getCategory().name()+"\n"+
+				"**  Category:" users[i].categoryToString()+"\n"+
 				"**********************************\n \n";
 			}
 			else{
@@ -133,7 +133,7 @@ public class MCS{
 		for(int i=0; i<poolSongs.length && !found; i++){
 			if(poolSongs[i]!=null && poolSongs[i].getTitle().equalsIgnoreCase(songTitle)
 				 && poolSongs[i].getArtist().equalsIgnoreCase(artist) 
-				 && poolSongs[i].getGenre().name().equals(genre)){
+				 && poolSongs[i].genreToString().equals(genre)){
 
 				song=poolSongs[i];
 				found=true;
@@ -149,6 +149,25 @@ public class MCS{
 	}
 
 	public String showPoolSongs(){
+		String poolList="";
+		control=false;
+		for(int i=0; i<poolSongs.length && !control; i++){
+			if(poolSongs[i]!=null){
+				poolList+="**************  Song **************\n"+
+				"**  Title: "+poolSongs[i].getTitle()+"\n"+
+				"**  Artist: "+poolSongs[i].getArtist()+"\n"+                      
+				"**  Duration: " poolSongs[i].durationToString()+"\n"+
+				"**  Genre: "+poolSongs[i].genreToString()+"\n"+
+				"***********************************\n \n";
+			}
+			else{
+				control=true;
+			}
+		}
+		if (poolSongs[0]==null){
+			poolList="Aun no se han compartido canciones";
+		}
+		return poolList;
 
 	}
 

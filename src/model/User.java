@@ -74,4 +74,10 @@ public class User{
 		numSongs++;
 		return numSongs;
 	}
+
+	public String categoryToString(){
+		String cat;
+		cat=category.name();
+		return cat;
+	}
 }
