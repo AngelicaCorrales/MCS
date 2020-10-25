@@ -8,10 +8,10 @@ public class Song{
 	private String artist;
 	private int[] duration;
 
-	public Song(String title, String artist){
+	public Song(String title, String artist, int[] duration){
 		this.title=title;
 		this.artist=artist;
-		duration= new int[2];
+		this.duration=duration;
 		genre=DESCONOCIDO;
 
 	}

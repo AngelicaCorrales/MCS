@@ -74,6 +74,14 @@ public class MCS{
 	
 	}
 
+	public boolean verifyUser(String userName){
+		User userx=findUser(String userName);
+		boolean objExist=true;
+		if(userx==null)
+			objExist=false;
+		return objExist;
+	}
+
 	public String showUsers(){
 		String userList="";
 		control=false;
@@ -95,17 +103,52 @@ public class MCS{
 		return userList;
 	}
 
-	public void createSong(){
+	public String addSong(String userName, String songTitle, String artist, int[] duration){
+		String message="La cancion ha sido agregada al pool de canciones";
+		boolean exit=false;
+		Song song=findSong(songTitle);
+		if(song==null){
+			for(int i=0; i<poolSongs.length && !exit; i++){
+				if(poolSongs[i]==null){
+					poolSongs[i]= new Song(songTitle, artist, duration);
+					exit=true;
+					userAddedSong(userName);
+				}
+			}
+			if(!exit){
+				message="Lo sentimos. No se pueden agregar mas canciones :(";
+			}
 
+		}
+		else{
+			message="Ups! La cancion ya habia sido agregada al pool de canciones";
+		}
+		return message;
+
+	}
+
+	public Song findSong(String songTitle){
+		boolean found= false;
+		Song song=null;
+		for(int i=0; i<poolSongs.length && !found; i++){
+			if(poolSongs[i]!=null && poolSongs[i].getUserName().equals(songTitle)){
+				song=poolSongs[i];
+				found=true;
+			}
+		}
+		return song;
+	
+	}
+
+	public void userAddedSong(String userName){
+		User userx=findUser(userName);
+		userx.updateUserCategory();
 	}
 
 	public void showPoolSongs(){
 
 	}
 
-	public void addSong(){
-
-	}
 
 	public void createPlaylist(){
 		

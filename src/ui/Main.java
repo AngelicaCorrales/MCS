@@ -25,7 +25,7 @@ public class Main{
 		System.out.println("Seleccione una opcion:\n"+
 				"(1) Registrar usuario\n"+
 				"(2) Mostrar usuarios registrados \n"+
-				"(3) Crear cancion\n"+
+				"(3) Compartir cancion\n"+
 				"(4) Mostrar canciones en el pool de canciones compartidas \n"+
 				"(5) Crear playlist\n"+
 				"(6) Mostrar playlists creadas \n"+
@@ -45,7 +45,7 @@ public class Main{
 			showRegisteredUsers();
 			break;
 		case 3:
-			createSong();
+			shareSong();
 			break;
 		case 4:
 			showSongs();
@@ -103,7 +103,6 @@ public class Main{
 
 	}
 	public void showRegisteredUsers(){
-		sc.nextLine();
 		System.out.println("-----------------------------------------------------------");
 		System.out.println("MOSTRAR USUARIOS REGISTRADOS \n");
         String list=mcs.showUsers();
@@ -112,7 +111,43 @@ public class Main{
 
 	}
 
-	public void createSong(){
+	public void shareSong(){
+		sc.nextLine();
+		String message;
+		int[] duration= new int[2];
+		System.out.println("-----------------------------------------------------------");
+		System.out.println("COMPARTIR CANCION \n");
+		System.out.println("Ingrese el nombre de usuario");
+		String userName=sc.nextLine();
+		boolean verify=verifyUser(userName);
+		if(verify){
+			System.out.println("Ingrese titulo de la cancion");
+			String title=sc.nextLine();
+
+			System.out.println("Ingrese nombre del artista");
+			String artist=sc.nextLine();
+
+			System.out.println("DURACION DE LA CANCION (primero ingrese los minutos, luego los segundos)");
+			System.out.println("Ingrese los minutos");
+			int min=sc.nextInt();
+			duration[0]=min;
+			System.out.println("Ingrese los segundos");
+			int seg=sc.nextInt();
+			duration[1]=seg;
+
+			message=mcs.addSong(userName, title, artist,duration);
+
+			System.out.println("-----------------------------------------------------------");
+			System.out.println(message);
+
+
+		}
+		else{
+			System.out.println("-----------------------------------------------------------");
+			System.out.println("El usuario no esta registrado.");
+		}
+		System.out.println("-----------------------------------------------------------");
+
 
 	}
 
