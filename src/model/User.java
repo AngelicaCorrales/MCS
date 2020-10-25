@@ -12,7 +12,7 @@ public class User{
 		this.userName=userName;
 		this.password=password;
 		this.age=age;
-		category=NEWBIE;
+		category=Category.NEWBIE;
 		numSongs=0;
 
 	}
@@ -52,17 +52,17 @@ public class User{
 	public void updateUserCategory(){
 		int nSongs=addedSong();
 		if(nSongs<3){
-			setCategory(NEWBIE);
+			setCategory(Category.NEWBIE);
 		}
 
 		else if(nSongs<10){
-			setCategory(LITTLE_CONTRIBUTOR);
+			setCategory(Category.LITTLE_CONTRIBUTOR);
 		}
 		else if(nSongs<30){
-			setCategory(MILD_CONTRIBUTOR);
+			setCategory(Category.MILD_CONTRIBUTOR);
 		}
 		else{
-			setCategory(STAR_CONTRIBUTOR);
+			setCategory(Category.STAR_CONTRIBUTOR);
 		}
 	}
 

@@ -6,13 +6,16 @@ public class Song{
 
 	private String title;
 	private String artist;
+	private String releaseDate;
 	private int[] duration;
 
-	public Song(String title, String artist, int[] duration){
+
+	public Song(String title, String artist, String releaseDate, int[] duration, String genre){
 		this.title=title;
 		this.artist=artist;
+		this.releaseDate=releaseDate;
 		this.duration=duration;
-		genre=DESCONOCIDO;
+		this.genre=Genre.valueOf(genre);
 
 	}
 
@@ -30,6 +33,14 @@ public class Song{
 
 	public void setArtist(String artist){
 		this.artist=artist;
+	}
+
+	public String getReleaseDate(){
+		return releaseDate;
+	}
+
+	public void setReleaseDate(String releaseDate){
+		this.releaseDate=releaseDate;
 	}
 
 	public int[] getDuration(){

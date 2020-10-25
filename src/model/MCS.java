@@ -103,14 +103,14 @@ public class MCS{
 		return userList;
 	}
 
-	public String addSong(String userName, String songTitle, String artist, int[] duration){
+	public String addSong(String userName, String songTitle, String artist, String date, int[] duration, String genre){
 		String message="La cancion ha sido agregada al pool de canciones";
 		boolean exit=false;
-		Song song=findSong(songTitle);
+		Song song=findSong(songTitle, artist, genreS);
 		if(song==null){
 			for(int i=0; i<poolSongs.length && !exit; i++){
 				if(poolSongs[i]==null){
-					poolSongs[i]= new Song(songTitle, artist, duration);
+					poolSongs[i]= new Song(songTitle, artist, date, duration, genre);
 					exit=true;
 					userAddedSong(userName);
 				}
@@ -127,11 +127,14 @@ public class MCS{
 
 	}
 
-	public Song findSong(String songTitle){
+	public Song findSong(String songTitle,  String artist, String genre){
 		boolean found= false;
 		Song song=null;
 		for(int i=0; i<poolSongs.length && !found; i++){
-			if(poolSongs[i]!=null && poolSongs[i].getUserName().equals(songTitle)){
+			if(poolSongs[i]!=null && poolSongs[i].getTitle().equalsIgnoreCase(songTitle)
+				 && poolSongs[i].getArtist().equalsIgnoreCase(artist) 
+				 && poolSongs[i].getGenre().name().equals(genre)){
+
 				song=poolSongs[i];
 				found=true;
 			}
@@ -145,7 +148,7 @@ public class MCS{
 		userx.updateUserCategory();
 	}
 
-	public void showPoolSongs(){
+	public String showPoolSongs(){
 
 	}
 

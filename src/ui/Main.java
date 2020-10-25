@@ -118,24 +118,53 @@ public class Main{
 		System.out.println("-----------------------------------------------------------");
 		System.out.println("COMPARTIR CANCION \n");
 		System.out.println("Ingrese el nombre de usuario");
-		String userName=sc.nextLine();
+		String userName=sc.nextLine().toLowerCase();
 		boolean verify=verifyUser(userName);
 		if(verify){
-			System.out.println("Ingrese titulo de la cancion");
+			System.out.println("\nIngrese titulo de la cancion");
 			String title=sc.nextLine();
 
-			System.out.println("Ingrese nombre del artista");
+			System.out.println("\nIngrese nombre del artista");
 			String artist=sc.nextLine();
 
-			System.out.println("DURACION DE LA CANCION (primero ingrese los minutos, luego los segundos)");
-			System.out.println("Ingrese los minutos");
+			System.out.println("\nFECHA DE LANZAMIENTO (primero el dia, luego mes, por ultimo anio");
+			System.out.println("\nIngrese el dia");
+			int day=sc.nextInt();
+
+			System.out.println("\nIngrese el mes (en formato numerico)");
+			int month=sc.nextInt();
+
+			System.out.println("\nIngrese el anio");
+			int year=sc.nextInt();
+
+			String date=day+"/"+month+"/"+year;
+
+			System.out.println("\nDURACION DE LA CANCION (primero ingrese los minutos, luego los segundos)");
+			System.out.println("\nIngrese los minutos");
 			int min=sc.nextInt();
 			duration[0]=min;
-			System.out.println("Ingrese los segundos");
+			System.out.println("\nIngrese los segundos");
 			int seg=sc.nextInt();
 			duration[1]=seg;
 
-			message=mcs.addSong(userName, title, artist,duration);
+			sc.nextLine();
+			String genre;
+			boolean control;
+			do{
+				System.out.println("\nIngrese el genero de la cancion (ROCK, HIPHOP, CLASICA, REGGAE, SALSA, METAL)");
+				genre=sc.nextLine().toUpperCase();
+
+				if(genre.equals("ROCK")|| genre.equals("HIPHOP")||genre.equals("CLASICA")||genre.equals("REGGAE")|| genre.equals("SALSA")||genre.equals("METAL")){
+					control=false;
+				}
+				else{
+					control=true;
+					System.out.println("Genero no valido. Ingrese nuevamente");
+				}
+			}while(control);
+
+
+			message=mcs.addSong(userName, title, artist, date, duration, genre);
 
 			System.out.println("-----------------------------------------------------------");
 			System.out.println(message);
@@ -152,6 +181,11 @@ public class Main{
 	}
 
 	public void showSongs(){
+		System.out.println("-----------------------------------------------------------");
+		System.out.println("MOSTRAR CANCIONES EN EL POOL DE CANCIONES COMPARTIDAS \n");
+        String list=mcs.showUsers();
+        System.out.println(list);
+        System.out.println("-----------------------------------------------------------");
 
 	}
 
