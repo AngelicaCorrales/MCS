@@ -28,7 +28,7 @@ public class Song{
 	}
 
 	public String getArtist(){
-		return title;
+		return artist;
 	}
 
 	public void setArtist(String artist){
