@@ -52,18 +52,13 @@ public class Main{
 			showSongs();
 			break;
 		case 5:
-			int opt;
-			do{
-				opt=showMenuPlaylists();
-				
-			}while(opt!=1 && opt!=2 && opt!=3);
-			createPlaylist(opt);
+			createPlaylist();
 			break;
 		case 6:
 			//addSongToPlaylist();
 			break;
 		case 7:
-			showPlaylists();
+			//showPlaylists();
 			break;
 
 		case 8:
@@ -187,7 +182,7 @@ public class Main{
         System.out.println("-----------------------------------------------------------");
 
 	}
-
+	/*
 	public int showMenuPlaylists(){
 		System.out.println("Seleccione la playlist que desea crear:\n"+
 				"(1) Privada\n"+
@@ -196,24 +191,79 @@ public class Main{
 		int option= sc.nextInt();
 		return option;
 	}
+	*/
 
-	public void createPlaylist(int op){
-		switch(op){
-			case 1:
-				createPrivatePlaylist();
-				break;
-			case 2:
-				createRestrictedPlaylist();
-				break;
-			case 3:
-				createPublicPlaylist();
-				break;
-			default:
-			System.out.println("\n Error, opcion no valida \n");
+	public void createPlaylist(){
 		
-		}
-	}
+		String message="";
+		int option;
+		boolean error;
+		String playName;
+		System.out.println("-----------------------------------------------------------");
+		System.out.println("CREAR PLAYLIST\n");
 
+		do{
+			error=false;
+			System.out.println("Seleccione la playlist que desea crear:\n"+
+				"(1) Privada\n"+
+				"(2) Restringida \n"+
+				"(3) Publica");
+			option= sc.nextInt();
+								
+			
+			switch(option){
+				case 1:
+				case 3:
+					sc.nextLine();
+					System.out.println("Ingrese el nombre de usuario");
+					String userName=sc.nextLine().toLowerCase();
+					
+					
+					System.out.println("\nIngrese el nombre de la playlist");
+					playName=sc.nextLine();
+					if(option==1){
+						message=mcs.createPlaylist(userName, playName, option);//necesito por parametro a option
+					}
+					else{
+						message=mcs.createPlaylist(userName, playName);
+					}
+					
+					break;
+
+				case 2:
+					int numUsers;
+					do{
+						System.out.println("Ingrese el numero de usuarios que van a colaborar en la playlist. MAX 5 usuarios");
+						numUsers=sc.nextInt();
+					}while(numUsers<1 ||numUsers>5);
+
+					String[] userNames= new String[numUsers];
+					
+
+					sc.nextLine();
+					for(int i=0; i<userNames.length; i++){
+						System.out.println("Ingrese el nombre de usuario "+(i+1));
+						userNames[i]=sc.nextLine().toLowerCase();
+												
+					}
+						System.out.println("\nIngrese el nombre de la playlist");
+						playName=sc.nextLine();
+						message=mcs.createPlaylist(userNames, playName);
+					
+					break;
+				
+				default:
+				System.out.println("\n Error, opcion no valida \n");
+				error=true;
+			
+			}
+		}while(error);
+
+		System.out.println("-----------------------------------------------------------");
+		System.out.println(message);
+		System.out.println("-----------------------------------------------------------");
+	}
+	/*
 	public void createPrivatePlaylist(){
 		sc.nextLine();
 		String message;
@@ -248,6 +298,7 @@ public class Main{
 	public void showPlaylists(){
 
 	}
+	*/
 	/*
 	public void addSongToPlaylist(){
 		sc.nextLine();

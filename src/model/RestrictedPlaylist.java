@@ -1,9 +1,11 @@
 package model;
 public class RestrictedPlaylist extends Playlist{
 
-//relacion con user
-	public RestrictedPlaylist(String name){
+	User[] owners;
+
+	public RestrictedPlaylist(User[] owners, String name){
 		super(name);
+		this.owners=owners;
 	}
 
 	public void usersAccess(){

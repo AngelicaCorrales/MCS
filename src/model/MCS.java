@@ -168,8 +168,129 @@ public class MCS{
 	}
 
 
-	public void createPlaylist(){
-		//sobrecarga con public private y restricted
+	public Playlist findPlaylist(String playlistName){
+		boolean found= false;
+		Playlist playlistx=null;
+		for(int i=0; i<playlists.length && !found; i++){
+			if(playlists[i]!=null && playlists[i].getName().equalsIgnoreCase(playlistName)){
+				playlistx=playlists[i];
+				found=true;
+			}
+		}
+		return playlistx;
+	
+	}
+
+	public String createPlaylist(String userName, String playlistName, int option){
+		//priv
+		String message="La playlist ha sido creada exitosamente";
+		boolean exit=false;
+		Playlist playlistx=findPlaylist(playlistName);
+		User user=findUser(userName);
+		if(user!=null){
+			if(playlistx==null){
+				for(int i=0; i<playlists.length && !exit; i++){
+					if(playlists[i]==null){
+						playlists[i]= new PrivatePlaylist(user, playlistName);
+						exit=true;
+					}
+				}
+				if(!exit){
+					message="Lo sentimos. No se pueden crear mas playlists :(";
+				}
+
+			}
+			else{
+				message="Ups! Ya existe una playlist con ese nombre";
+			}
+		}
+		else{
+			message="No se pudo crear la playlist. El usuario no esta registrado.";
+		}
+		return message;
+		
+	}
+
+	public String createPlaylist(String userName, String playlistName){
+		//public
+		String message="La playlist ha sido creada exitosamente";
+		boolean exit=false;
+		Playlist playlistx=findPlaylist(playlistName);
+		User user=findUser(userName);
+		if(user!=null){
+			if(playlistx==null){
+				for(int i=0; i<playlists.length && !exit; i++){
+					if(playlists[i]==null){
+						playlists[i]= new PublicPlaylist(playlistName);
+						exit=true;
+					}
+				}
+				if(!exit){
+					message="Lo sentimos. No se pueden crear mas playlists :(";
+				}
+
+			}
+			else{
+				message="Ups! Ya existe una playlist con ese nombre";
+			}
+		}
+		else{
+			message="No se pudo crear la playlist. El usuario no esta registrado.";
+		}
+		return message;
+		
+	}
+
+	public String createPlaylist(String[] userNames, String playlistName){
+		//restricted
+		String message="La playlist ha sido creada exitosamente";
+		boolean exit=false;
+		Playlist playlistx=findPlaylist(playlistName);
+		int userLength=userNames.length;
+		User[] usersx= new User[userLength];
+		boolean[] exist= new boolean[userLength];
+		boolean allExist=true;
+
+		for(int i=0; i<usersx.length; i++){
+			usersx[i]=findUser(userNames[i]);
+			if(usersx[i]!=null){
+				exist[i]=true;
+			}
+			else{
+				exist[i]=false;
+			}
+			allExist=allExist&&exist[i];
+		}
+
+		if(allExist){
+
+			if(playlistx==null){
+				for(int i=0; i<playlists.length && !exit; i++){
+					if(playlists[i]==null){
+						playlists[i]= new RestrictedPlaylist(usersx, playlistName);
+						exit=true;
+					}
+				}
+				if(!exit){
+					message="Lo sentimos. No se pueden crear mas playlists :(";
+				}
+			}
+			else{
+				message="Ups! Ya existe una playlist con ese nombre";
+			}
+
+		}
+		else{
+			message="No se pudo crear la playlist. Usuario(s) no registrado(s): ";
+			for(int i=0; i<usersx.length; i++){
+				if(!exist[i]){
+					message+="-"+userNames[i];
+				}
+			}
+		}
+
+		return message;
+		
 	}
 
 	/*
