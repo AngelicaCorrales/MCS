@@ -258,8 +258,8 @@ public class MCS{
 			}
 			else{
 				exist[i]=false;
+				allExist=false;
 			}
-			allExist=allExist&&exist[i];
 		}
 
 		if(allExist){
@@ -293,16 +293,15 @@ public class MCS{
 		
 	}
 
-	/*
-	public String addSongToPlaylist(String playlistName, String userName, String songName){
+		public String addSongToPlaylist(String playlistName, String userName, String songName){
 		String message="";
-		boolean control=true;
+		boolean allExist=true;
 		Playlist playlistx=findPlaylist(playlistName);
 		User userx= findUser(userName);
 		Song songx= findSong(songName);
 
 		if( playlistx == null || userx==null || songx ==null){
-			control=false;
+			allExist=false;
 			message+="Error.";
 			if(playlistx==null){
 				message+=" No existe la playlist ingresada.";
@@ -314,7 +313,7 @@ public class MCS{
 				message+=" No exite la cancion ingresada.";
 			}
 		}
-		if(control){
+		if(allExist){
 			message+=playlistx.addSongToPlaylist(userx, songx);
 			
 		}
@@ -323,5 +322,5 @@ public class MCS{
 
 
 	}
-	*/
+	
 }

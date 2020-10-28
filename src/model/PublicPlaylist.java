@@ -20,4 +20,5 @@ public class PublicPlaylist extends Playlist{
 	public void showRate(){
 		
 	}
+
 }

@@ -17,7 +17,7 @@ public class Main{
 		do{
 			option=objMain.showMenu();
 			objMain.chosenOption(option);
-		}while(option!=8);
+		}while(option!=9);
 		
 	}
 
@@ -30,7 +30,8 @@ public class Main{
 				"(5) Crear playlist\n"+
 				"(6) Agregar cancion a una playlist\n"+
 				"(7) Mostrar playlists creadas \n"+
-				"(8) Salir");
+				"(8) Calificar una playlist publica \n"+
+				"(9) Salir");
 		int option= sc.nextInt();
 		return option;
 	}
@@ -55,13 +56,16 @@ public class Main{
 			createPlaylist();
 			break;
 		case 6:
-			//addSongToPlaylist();
+			addSongToPlaylist();
 			break;
 		case 7:
 			//showPlaylists();
 			break;
-
 		case 8:
+			//calificar playlist
+			break;
+
+		case 9:
 			System.out.println("\nHasta la proxima!");
 			break;
 			
@@ -182,16 +186,7 @@ public class Main{
         System.out.println("-----------------------------------------------------------");
 
 	}
-	/*
-	public int showMenuPlaylists(){
-		System.out.println("Seleccione la playlist que desea crear:\n"+
-				"(1) Privada\n"+
-				"(2) Restringida \n"+
-				"(3) Publica");
-		int option= sc.nextInt();
-		return option;
-	}
-	*/
+	
 
 	public void createPlaylist(){
 		
@@ -263,43 +258,7 @@ public class Main{
 		System.out.println(message);
 		System.out.println("-----------------------------------------------------------");
 	}
-	/*
-	public void createPrivatePlaylist(){
-		sc.nextLine();
-		String message;
-		System.out.println("-----------------------------------------------------------");
-		System.out.println("CREAR PLAYLIST PRIVADA \n");
-		System.out.println("Ingrese el nombre de usuario");
-		String userName=sc.nextLine().toLowerCase();
 		
-		
-		System.out.println("\nIngrese el nombre de la playlist");
-		String playName=sc.nextLine();
-
-
-
-
-
-
-
-		
-		System.out.println("-----------------------------------------------------------");
-
-	}
-
-	public void createRestrictedPlaylist(){
-
-	}
-
-	public void createPublicPlaylist(){
-
-	}
-
-	public void showPlaylists(){
-
-	}
-	*/
-	/*
 	public void addSongToPlaylist(){
 		sc.nextLine();
 		String message;
@@ -319,7 +278,11 @@ public class Main{
 
 	
 	}
-	*/
+	
+	public void showPlaylists(){
+
+	}
+	
 
 	public void createMCS(){
 		System.out.println(""+

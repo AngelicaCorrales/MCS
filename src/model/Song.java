@@ -61,6 +61,10 @@ public class Song{
 
 	public String durationToString(){
 		String time;
+		if(duration[1]<10){
+			time=duration[0]+":0"+duration[1]; 
+		}
+
 		time=duration[0]+":"+duration[1];
 		return time;
 	}

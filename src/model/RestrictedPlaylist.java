@@ -8,11 +8,25 @@ public class RestrictedPlaylist extends Playlist{
 		this.owners=owners;
 	}
 
-	public void usersAccess(){
-
+	public User[] getUser(){
+		return owners;
 	}
 
-	public void showUsers(){
-		
+	public String addSongToPlaylist(User userx, Song songx){
+		String message="";
+		boolean control=false;
+		for(int i=0; i<owners.length && !control; i++){
+			if(userx.getUserName().equals(owners[i].getUserName())){
+				control=true;
+				message=super.addSongToPlaylist(userx, songx);
+			}
+			else{
+				message="No se puede agregar la cancion. El usuario no es colaborador de la playlist";
+			}
+		}
+
+		return message;
 	}
+
+	
 }

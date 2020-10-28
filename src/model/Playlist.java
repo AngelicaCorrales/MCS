@@ -47,6 +47,59 @@ public class Playlist{
 		this.playlistSongs=playlistSongs;
 	}
 
+	public void updateDuration(Song songx){
+		duration[0]+=songx.getDuration()[0];
+		duration[1]+=songx.getDuration()[1];
+
+		if(duration[1]>=60){
+			duration[0]+=duration[1]/60;
+			duration[1]=duration[1]%60;
+		}
+	}
+
+	public String durationToString(){
+		String time;
+		if(duration[1]<10){
+			time=duration[0]+":0"+duration[1]; 
+		}
+		
+		time=duration[0]+":"+duration[1]; 
+		return time;
+	}
+
+	public void updateGenre(Song songx){
+		boolean same=false;
+		boolean exit=false;
+		for(int i=0; i<genres.length && !same; i++){
+			if(genres[i]!=null && genres[i]==songx.getGenre()){
+				same=true;
+			}
+		}
+		if(!same){
+			for(int i=0; i<genres.length && !exit; i++){
+				if(genres[i]==null){
+					genres[i]=songx.getGenre();
+					exit=true;
+
+				}
+			}
+		}
+	}
+
+	public String genreToString(){
+		String genrex="";
+		for(int i=0; i<genres.length; i++){
+			if(genres[0]==null){
+				genrex=Genre.UNKNOWN.name();
+			}
+			if(genres[i]!=null){
+				genrex+="-"+genres[i].name();
+			}
+			
+		}
+		return genrex;
+	}
+
 	public String addSongToPlaylist(User userx, Song songx){
 		String message="";
 		boolean control=false;
@@ -55,6 +108,8 @@ public class Playlist{
 				playlistSongs[i]=songx;
 				control=true;
 				message="Se agrego la cancion a la playlist exitosamente";
+				updateDuration(songx);
+				updateGenre(songx);
 			}
 		}
 		if(!control){

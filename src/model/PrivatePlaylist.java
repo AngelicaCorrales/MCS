@@ -8,22 +8,16 @@ public class PrivatePlaylist extends Playlist{
 		this.owner=owner;
 
 	}
-	/*
-	public void userAcces(){
 
+	public User getUser(){
+		return owner;
 	}
-
-	public void showUser(){
-		
-	}
-	*/
+	
 
 	public String addSongToPlaylist(User userx, Song songx){
 		String message="";
-		boolean control=false;
-
+		
 		if(userx.getUserName().equals(owner.getUserName())){
-			control=true;
 			message=super.addSongToPlaylist(userx, songx);
 		}
 		else{
