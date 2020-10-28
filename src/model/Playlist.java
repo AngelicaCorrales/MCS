@@ -62,8 +62,11 @@ public class Playlist{
 		if(duration[1]<10){
 			time=duration[0]+":0"+duration[1]; 
 		}
+		else{
+			time=duration[0]+":"+duration[1]; 
+		}
 		
-		time=duration[0]+":"+duration[1]; 
+		
 		return time;
 	}
 
@@ -116,5 +119,12 @@ public class Playlist{
 			message="Lo sentimos. No se pudo agregar la cancion a la playlist :(";
 		}
 		return message;
+	}
+
+	public void userRated(){
+
+	}
+	public void ratePlaylist(int rateSumx){
+
 	}
 }

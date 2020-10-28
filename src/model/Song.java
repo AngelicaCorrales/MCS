@@ -64,8 +64,11 @@ public class Song{
 		if(duration[1]<10){
 			time=duration[0]+":0"+duration[1]; 
 		}
+		else{
+			time=duration[0]+":"+duration[1];
+		}
 
-		time=duration[0]+":"+duration[1];
+		
 		return time;
 	}
 

@@ -51,15 +51,15 @@ public class User{
 	}
 
 	public void updateUserCategory(){
-		int nSongs=addedSong();
-		if(nSongs<3){ 
+		addedSong();
+		if(numSongs<3){ 
 			setCategory(Category.NEWBIE);
 		}
 
-		else if(nSongs<10){
+		else if(numSongs<10){
 			setCategory(Category.LITTLE_CONTRIBUTOR);
 		}
-		else if(nSongs<30){
+		else if(numSongs<30){
 			setCategory(Category.MILD_CONTRIBUTOR);
 		}
 		else{
@@ -71,9 +71,8 @@ public class User{
 		return numSongs;
 	}
 
-	public int addedSong(){
+	public void addedSong(){
 		numSongs++;
-		return numSongs;
 	}
 
 	public String categoryToString(){

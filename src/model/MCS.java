@@ -293,21 +293,21 @@ public class MCS{
 		
 	}
 
-		public String addSongToPlaylist(String playlistName, String userName, String songName){
+	public String addSongToPlaylist( String userName, String playlistName, String songName){
 		String message="";
 		boolean allExist=true;
-		Playlist playlistx=findPlaylist(playlistName);
 		User userx= findUser(userName);
+		Playlist playlistx=findPlaylist(playlistName);
 		Song songx= findSong(songName);
 
-		if( playlistx == null || userx==null || songx ==null){
+		if( userx==null || playlistx == null  || songx ==null){
 			allExist=false;
 			message+="Error.";
-			if(playlistx==null){
-				message+=" No existe la playlist ingresada.";
-			}
 			if(userx==null){
 				message+=" No exite el usuario ingresado.";
+			}
+			if(playlistx==null){
+				message+=" No existe la playlist ingresada.";
 			}
 			if(songx==null){
 				message+=" No exite la cancion ingresada.";
@@ -320,6 +320,41 @@ public class MCS{
 
 		return message;
 
+
+	}
+
+	public String ratePlaylist(String userName, String playlistName, int rate){
+		String message="";
+		boolean allExist=true;
+		User userx= findUser(userName);
+		Playlist playlistx=findPlaylist(playlistName);
+			
+
+		if( userx==null || playlistx == null){
+			allExist=false;
+			message+="Error.";
+			if(userx==null){
+				message+=" No exite el usuario ingresado.";
+			}
+			if(playlistx==null){
+				message+=" No existe la playlist ingresada.";
+			}
+			
+		}
+		if(allExist){
+			if(playlistx instanceof PublicPlaylist){
+				playlistx.userRated();
+				playlistx.ratePlaylist(rate);
+				message+="Se ha guardado la calificacion :)";
+
+			}
+			else{
+				message="Ups! La playlist ingresada no es publica";
+			}
+			
+		}
+
+		return message;
 
 	}
 	

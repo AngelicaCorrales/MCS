@@ -29,8 +29,8 @@ public class Main{
 				"(4) Mostrar canciones en el pool de canciones compartidas \n"+
 				"(5) Crear playlist\n"+
 				"(6) Agregar cancion a una playlist\n"+
-				"(7) Mostrar playlists creadas \n"+
-				"(8) Calificar una playlist publica \n"+
+				"(7) Calificar una playlist publica \n"+
+				"(8) Mostrar playlists creadas \n"+
 				"(9) Salir");
 		int option= sc.nextInt();
 		return option;
@@ -59,10 +59,10 @@ public class Main{
 			addSongToPlaylist();
 			break;
 		case 7:
-			//showPlaylists();
+			ratePlaylist();
 			break;
 		case 8:
-			//calificar playlist
+			showPlaylists();
 			break;
 
 		case 9:
@@ -264,13 +264,13 @@ public class Main{
 		String message;
 		System.out.println("-----------------------------------------------------------");
 		System.out.println("AGREGAR CANCION A UNA PLAYLIST \n");
-		System.out.println("Ingrese el nombre de la playlist");
-		String playlistName=sc.nextLine();
-		System.out.println("\nIngrese el nombre de usuario");
+		System.out.println("Ingrese el nombre de usuario");
 		String userName=sc.nextLine().toLowerCase();
+		System.out.println("\nIngrese el nombre de la playlist");
+		String playlistName=sc.nextLine();
 		System.out.println("\nIngrese el nombre de la cancion");
 		String songName=sc.nextLine();
-		message=mcs.addSongToPlaylist(playlistName, userName, songName);
+		message=mcs.addSongToPlaylist(userName, playlistName, songName);
 
 		System.out.println("-----------------------------------------------------------");
 		System.out.println(message);
@@ -278,9 +278,35 @@ public class Main{
 
 	
 	}
+
+	public void ratePlaylist(){
+		sc.nextLine();
+		String message;
+		System.out.println("-----------------------------------------------------------");
+		System.out.println("CALIFICAR UNA PLAYLIST PUBLICA \n");
+		System.out.println("Ingrese el nombre de usuario");
+		String userName=sc.nextLine().toLowerCase();
+		System.out.println("\nIngrese el nombre de la playlist");
+		String playlistName=sc.nextLine();
+		int rate;
+		do{
+			System.out.println("\nIngrese la calificacion de la playlist (1 la nota mas baja, 5 la nota mas alta)");
+			rate=sc.nextInt();
+		}while(rate<1 ||rate>5);
+		message=mcs.ratePlaylist(userName, playlistName, rate);
+
+		System.out.println("-----------------------------------------------------------");
+		System.out.println(message);
+		System.out.println("-----------------------------------------------------------");
+
+	}
 	
 	public void showPlaylists(){
-
+		System.out.println("-----------------------------------------------------------");
+		System.out.println("MOSTRAR PLAYLISTS CREADAS \n");
+        //String list=mcs.showPlaylists();
+        //System.out.println(list);
+        System.out.println("-----------------------------------------------------------");
 	}
 	
 
