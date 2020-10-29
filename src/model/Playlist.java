@@ -1,9 +1,11 @@
 package model;
 
 public class Playlist{
-
+	//attributes
 	private String title;
 	private int[] duration;
+
+	//relationships
 	private Genre[] genres;
 	private Song[] playlistSongs;
 	
@@ -13,39 +15,39 @@ public class Playlist{
 		duration=new int[2];
 		genres=new Genre[6];
 		playlistSongs= new Song[MCS.MAX_SONGS];
-	}
+	}//end constructor
 
 	public String getTitle(){
 		return title;
-	}
+	}//end
 
 	public void setTitle(String title){
 		this.title=title;
-	}
+	}//end
 
 	public int[] getDuration(){
 		return duration;
-	}
+	}//end
 
 	public void setDuration(int[] duration){
 		this.duration=duration;
-	}
+	}//end
 
 	public Genre[] getGenres(){
 		return genres;
-	}
+	}//end
 
 	public void setGenres(Genre[] genres){
 		this.genres=genres;
-	}
+	}//end
 
 	public Song[] getSongs(){
 		return playlistSongs;
-	}
+	}//end
 
 	public void setSongs(Song[] playlistSongs){
 		this.playlistSongs=playlistSongs;
-	}
+	}//end
 
 	public void updateDuration(Song songx){
 		duration[0]+=songx.getDuration()[0];
@@ -55,7 +57,7 @@ public class Playlist{
 			duration[0]+=duration[1]/60;
 			duration[1]=duration[1]%60;
 		}
-	}
+	}//end updateDuration
 
 	public String durationToString(){
 		String time;
@@ -71,7 +73,7 @@ public class Playlist{
 		
 		
 		return time;
-	}
+	}//enddurationToString
 
 	public void updateGenre(Song songx){
 		boolean same=false;
@@ -90,7 +92,7 @@ public class Playlist{
 				}
 			}
 		}
-	}
+	}//end updateGenre
 
 	public String genreToString(){
 		String genrex="";
@@ -104,7 +106,7 @@ public class Playlist{
 			
 		}
 		return genrex;
-	}
+	}//end genreToString
 
 	public String addSongToPlaylist(User userx, Song songx){
 		String message="";
@@ -113,16 +115,21 @@ public class Playlist{
 			if(playlistSongs[i]==null){
 				playlistSongs[i]=songx;
 				control=true;
-				message="Se agrego la cancion a la playlist exitosamente";
+				message="Se agrego la cancion a la playlist exitosamente :D";
 				updateDuration(songx);
 				updateGenre(songx);
+			}else{
+				if(playlistSongs[i]==songx){
+					message="Ups! La cancion ya estaba en la playlist";
+					control=true;
+				}
 			}
 		}
 		if(!control){
 			message="Lo sentimos. No se pudo agregar la cancion a la playlist :(";
 		}
 		return message;
-	}
+	}//end addSongToPlaylist
 
 	
-}
+}//end class

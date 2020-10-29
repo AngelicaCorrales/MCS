@@ -1,9 +1,11 @@
 package model;
 public class MCS{
+	//constants
 	public final static int MAX_USERS=10;
 	public final static int MAX_PLAYLISTS=20;
 	public final static int MAX_SONGS=50;
 
+	//relationships
 	private User[] users;
 	private Song[] poolSongs;
 	private Playlist[] playlists;
@@ -12,34 +14,34 @@ public class MCS{
 		users= new User[MAX_USERS];
 		poolSongs= new Song[MAX_SONGS];
 		playlists= new Playlist[MAX_PLAYLISTS];
-	}
+	}//end constructor
 
 	public User[] getUsers(){
 		return users;
-	}
+	}//end 
 
 	public void setUsers(User[] users){
 		this.users=users;
-	}
+	}//end
 
 	public Song[] getSongs(){
 		return poolSongs;
-	}
+	}//end
 
 	public void setSongs(Song[] poolSongs){
 		this.poolSongs=poolSongs;
-	}
+	}//end
 
 	public Playlist[] getPlaylists(){
 		return playlists;
-	}
+	}//end
 
 	public void setPlaylists(Playlist[] playlists){
 		this.playlists=playlists;
-	}
+	}//end
 
 	public String createUser(String userName, String password, int age){
-		String message="El usuario ha sido registrado exitosamente";
+		String message="El usuario ha sido registrado exitosamente :D";
 		boolean exit=false;
 		User objUser=findUser(userName);
 		if(objUser==null){
@@ -59,7 +61,7 @@ public class MCS{
 		}
 		return message;
 
-	}
+	}//end createUser
 	
 	public User findUser(String userName){
 		boolean found= false;
@@ -72,7 +74,7 @@ public class MCS{
 		}
 		return obj;
 	
-	}
+	}//end findUser
 
 	public String showUsers(){
 		String userList="";
@@ -93,10 +95,10 @@ public class MCS{
 			userList="Aun no se han registrado usuarios";
 		}
 		return userList;
-	}
+	}//end showUsers
 
 	public String addSong(String userName, String songTitle, String artist, String date, int[] duration, String genre){
-		String message="La cancion ha sido agregada al pool de canciones";
+		String message="La cancion ha sido agregada al pool de canciones :D";
 		boolean exit=false;
 		Song song=findSong(songTitle);
 		User user=findUser(userName);
@@ -123,7 +125,7 @@ public class MCS{
 		}
 		return message;
 
-	}
+	}//end addSong
 
 	public Song findSong(String songTitle){
 		boolean found= false;
@@ -137,12 +139,12 @@ public class MCS{
 		}
 		return song;
 	
-	}
+	}//end findSong
 
 	public void userAddedSong(String userName){
 		User userx=findUser(userName);
 		userx.updateUserCategory();
-	}
+	}//end userAddedSong
 
 	public String showPoolSongs(){
 		String poolList="";
@@ -165,7 +167,7 @@ public class MCS{
 		}
 		return poolList;
 
-	}
+	}//end showPoolSongs
 
 
 	public Playlist findPlaylist(String playlistName){
@@ -179,11 +181,11 @@ public class MCS{
 		}
 		return playlistx;
 	
-	}
+	}//end findPlaylist
 
 	public String createPlaylist(String userName, String playlistName, int option){
-		//priv
-		String message="La playlist ha sido creada exitosamente";
+		//private playlist
+		String message="La playlist ha sido creada exitosamente :D";
 		boolean exit=false;
 		Playlist playlistx=findPlaylist(playlistName);
 		User user=findUser(userName);
@@ -209,11 +211,11 @@ public class MCS{
 		}
 		return message;
 		
-	}
+	}//end createPlaylist
 
 	public String createPlaylist(String userName, String playlistName){
-		//public
-		String message="La playlist ha sido creada exitosamente";
+		//public playlist
+		String message="La playlist ha sido creada exitosamente :D";
 		boolean exit=false;
 		Playlist playlistx=findPlaylist(playlistName);
 		User user=findUser(userName);
@@ -239,10 +241,10 @@ public class MCS{
 		}
 		return message;
 		
-	}
+	}//end createPlaylist
 
 	public String createPlaylist(String[] userNames, String playlistName){
-		//restricted
+		//restricted playlist
 		String message="La playlist ha sido creada exitosamente";
 		boolean exit=false;
 		Playlist playlistx=findPlaylist(playlistName);
@@ -291,7 +293,7 @@ public class MCS{
 
 		return message;
 		
-	}
+	}//end createPlaylist
 
 	public String addSongToPlaylist( String userName, String playlistName, String songName){
 		String message="";
@@ -317,11 +319,11 @@ public class MCS{
 			message+=playlistx.addSongToPlaylist(userx, songx);
 			
 		}
+		
 
 		return message;
 
-
-	}
+	}//end adddSongToPlaylist
 
 	public String ratePlaylist(String userName, String playlistName, int rate){
 		String message="";
@@ -356,7 +358,7 @@ public class MCS{
 
 		return message;
 
-	}
+	}//end ratePlaylist
 
 	public String showPlaylists(){
 		String playlistx="";
@@ -396,6 +398,6 @@ public class MCS{
 			playlistx="Aun no se han creado playlists";
 		}
 		return playlistx;
-	}
+	}//end showPlaylists
 	
-}
+}//end class

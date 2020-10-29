@@ -1,16 +1,16 @@
 package model;
 public class RestrictedPlaylist extends Playlist{
-
+	//relationship
 	User[] owners;
 
 	public RestrictedPlaylist(User[] owners, String name){
 		super(name);
 		this.owners=owners;
-	}
+	}//end constructor
 
 	public User[] getUser(){
 		return owners;
-	}
+	}//end
 
 	public String getOwners(){
 		String ownersPlay="";
@@ -18,7 +18,7 @@ public class RestrictedPlaylist extends Playlist{
 			ownersPlay+="- "+owners[i].getUserName()+" ";
 		}
 		return ownersPlay;
-	}
+	}//end getOwners
 
 	public String addSongToPlaylist(User userx, Song songx){
 		String message="";
@@ -34,7 +34,7 @@ public class RestrictedPlaylist extends Playlist{
 		}
 
 		return message;
-	}
+	}//end addSongToPlaylist
 
 	
-}
+}//end class

@@ -2,14 +2,14 @@ package ui;
 import java.util.Scanner;
 import model.MCS;
 public class Main{
-
+	//relashionship
 	private MCS mcs;
 	private Scanner sc;
 
 	public Main(){
 		sc= new Scanner(System.in);
 		createMCS();
-	}
+	}//end constructor
 
 	public static void main(String [] args){
 		Main objMain= new Main();
@@ -19,7 +19,7 @@ public class Main{
 			objMain.chosenOption(option);
 		}while(option!=9);
 		
-	}
+	}// end main
 
 	public int showMenu(){
 		System.out.println("Seleccione una opcion:\n"+
@@ -34,7 +34,7 @@ public class Main{
 				"(9) Salir");
 		int option= sc.nextInt();
 		return option;
-	}
+	}//end showMenu
 
 	
 	public void chosenOption(int op) {
@@ -73,13 +73,14 @@ public class Main{
 			System.out.println("\n Error, opcion no valida \n");
 		
 		}
-	}
+	}//end chosenOption
 
 	public void registerUser(){
 		sc.nextLine();
 		System.out.println("-----------------------------------------------------------");
 		System.out.println("REGISTRAR USUARIO \n");
 		String userName;
+		int age;
 		boolean control;
 		do{
 			System.out.println("Ingrese el nombre de usuario, sin espacios");
@@ -95,19 +96,22 @@ public class Main{
 		
 		System.out.println("\nIngrese la contrasenia");
 		String password=sc.nextLine();
-
-		System.out.println("\nIngrese su edad");
-		int age=sc.nextInt();
+		
+		do{
+			System.out.println("\nIngrese su edad");
+			age=sc.nextInt();
+			if(age<1 ||age>130){
+				System.out.println("\n No valido ._.");
+			}
+		}while(age<1 ||age>130);
 
 		String message=mcs.createUser(userName, password, age);
 		System.out.println("-----------------------------------------------------------");
 
 		System.out.println(message);
 		System.out.println("-----------------------------------------------------------");
+	}// end registerUser
 
-
-
-	}
 	public void showRegisteredUsers(){
 		System.out.println("-----------------------------------------------------------");
 		System.out.println("MOSTRAR USUARIOS REGISTRADOS \n");
@@ -115,11 +119,15 @@ public class Main{
         System.out.println(list);
         System.out.println("-----------------------------------------------------------");
 
-	}
+	}//end showRegisteredUsers
 
 	public void shareSong(){
 		sc.nextLine();
 		String message;
+		int day;
+		int month;
+		int year;
+		String genre;
 		int[] duration= new int[2];
 		System.out.println("-----------------------------------------------------------");
 		System.out.println("COMPARTIR CANCION \n");
@@ -131,30 +139,56 @@ public class Main{
 
 		System.out.println("\nIngrese nombre del artista");
 		String artist=sc.nextLine();
-
+		
 		System.out.println("\nFECHA DE LANZAMIENTO (primero el dia, luego mes, por ultimo anio");
-		System.out.println("\nIngrese el dia");
-		int day=sc.nextInt();
+		do{
+			System.out.println("\nIngrese el dia");
+			day=sc.nextInt();
+			if(day<1 ||day>31){
+				System.out.println("\n No valido ._.");
+			}
+		}while(day<1 ||day>31);
 
-		System.out.println("\nIngrese el mes (en formato numerico)");
-		int month=sc.nextInt();
+		
+		do{
+			System.out.println("\nIngrese el mes (en formato numerico)");
+			month=sc.nextInt();
+			if(month<1 ||month>12){
+				System.out.println("\n No valido ._.");
+			}
+		}while(month<1 ||month>12);
 
-		System.out.println("\nIngrese el anio");
-		int year=sc.nextInt();
+		
+		do{
+			System.out.println("\nIngrese el anio");
+			year=sc.nextInt();
+			if(year<1860 ||year>2020){
+				System.out.println("\n No valido ._.");
+			}
+		}while(year<1860 ||year>2020);
 
 		String date=day+"/"+month+"/"+year;
 
 		System.out.println("\nDURACION DE LA CANCION (primero ingrese los minutos, luego los segundos)");
-		System.out.println("\nIngrese los minutos");
-		duration[0]=sc.nextInt();
+		do{
+			System.out.println("\nIngrese los minutos");
+			duration[0]=sc.nextInt();
+			if(duration[0]<0){
+				System.out.println("\n No valido ._.");
+			}
+		}while(duration[0]<0);
 		
-		System.out.println("\nIngrese los segundos");
-		duration[1]=sc.nextInt();
-		
+		do{
+			System.out.println("\nIngrese los segundos");
+			duration[1]=sc.nextInt();
+			if(duration[1]<0 || duration[1]>59){
+				System.out.println("\n No valido ._.");
+			}
+		}while(duration[1]<0 || duration[1]>59);
 		
 
 		sc.nextLine();
-		String genre;
+		
 		boolean control;
 		do{
 			System.out.println("\n \nIngrese el genero de la cancion (ROCK, HIPHOP, CLASICA, REGGAE, SALSA, METAL)");
@@ -177,7 +211,7 @@ public class Main{
 		System.out.println("-----------------------------------------------------------");
 
 
-	}
+	}//end createSong
 
 	public void showSongs(){
 		System.out.println("-----------------------------------------------------------");
@@ -186,7 +220,7 @@ public class Main{
         System.out.println(list);
         System.out.println("-----------------------------------------------------------");
 
-	}
+	}//end showSongs
 	
 
 	public void createPlaylist(){
@@ -258,49 +292,62 @@ public class Main{
 		System.out.println("-----------------------------------------------------------");
 		System.out.println(message);
 		System.out.println("-----------------------------------------------------------");
-	}
+	}//end createPlaylist
 		
 	public void addSongToPlaylist(){
 		sc.nextLine();
 		String message;
 		System.out.println("-----------------------------------------------------------");
 		System.out.println("AGREGAR CANCION A UNA PLAYLIST \n");
-		System.out.println("Ingrese el nombre de usuario");
-		String userName=sc.nextLine().toLowerCase();
-		System.out.println("\nIngrese el nombre de la playlist");
-		String playlistName=sc.nextLine();
-		System.out.println("\nIngrese el nombre de la cancion");
-		String songName=sc.nextLine();
-		message=mcs.addSongToPlaylist(userName, playlistName, songName);
+		if (mcs.getPlaylists()[0]==null){
+			System.out.println("Aun no se han creado playlists");
+		}
+		else{
+			System.out.println("Ingrese el nombre de usuario");
+			String userName=sc.nextLine().toLowerCase();
+			System.out.println("\nIngrese el nombre de la playlist");
+			String playlistName=sc.nextLine();
+			System.out.println("\nIngrese el nombre de la cancion");
+			String songName=sc.nextLine();
+			message=mcs.addSongToPlaylist(userName, playlistName, songName);
+			System.out.println("-----------------------------------------------------------");
+			System.out.println(message);
+		}
 
-		System.out.println("-----------------------------------------------------------");
-		System.out.println(message);
+		
 		System.out.println("-----------------------------------------------------------");
 
 	
-	}
+	}//end addSongToPlaylist
 
 	public void ratePlaylist(){
 		sc.nextLine();
 		String message;
+		int rate;
 		System.out.println("-----------------------------------------------------------");
 		System.out.println("CALIFICAR UNA PLAYLIST PUBLICA \n");
-		System.out.println("Ingrese el nombre de usuario");
-		String userName=sc.nextLine().toLowerCase();
-		System.out.println("\nIngrese el nombre de la playlist");
-		String playlistName=sc.nextLine();
-		int rate;
-		do{
-			System.out.println("\nIngrese la calificacion de la playlist (1 la nota mas baja, 5 la nota mas alta)");
-			rate=sc.nextInt();
-		}while(rate<1 ||rate>5);
-		message=mcs.ratePlaylist(userName, playlistName, rate);
+		if(mcs.getPlaylists()[0]==null){
+			System.out.println("Aun no se han creado playlists");
+		}
+		else{
+			System.out.println("Ingrese el nombre de usuario");
+			String userName=sc.nextLine().toLowerCase();
+			System.out.println("\nIngrese el nombre de la playlist");
+			String playlistName=sc.nextLine();
+			
+			do{
+				System.out.println("\nIngrese la calificacion de la playlist (1 la nota mas baja, 5 la nota mas alta)");
+				rate=sc.nextInt();
+			}while(rate<1 ||rate>5);
+			message=mcs.ratePlaylist(userName, playlistName, rate);
+
+			System.out.println("-----------------------------------------------------------");
+			System.out.println(message);
+		}
 
 		System.out.println("-----------------------------------------------------------");
-		System.out.println(message);
-		System.out.println("-----------------------------------------------------------");
 
-	}
+	}//end ratePlaylist
 	
 	public void showPlaylists(){
 		System.out.println("-----------------------------------------------------------");
@@ -308,7 +355,7 @@ public class Main{
         String list=mcs.showPlaylists();
         System.out.println(list);
         System.out.println("-----------------------------------------------------------");
-	}
+	}//end showPlaylist
 	
 
 	public void createMCS(){
@@ -352,6 +399,6 @@ public class Main{
 			"************************************************* \n");
 
 		mcs=new MCS();
-	}
+	}//end createMCS
 
-}
+}//end class
