@@ -146,17 +146,18 @@ public class Main{
 
 		System.out.println("\nDURACION DE LA CANCION (primero ingrese los minutos, luego los segundos)");
 		System.out.println("\nIngrese los minutos");
-		int min=sc.nextInt();
-		duration[0]=min;
+		duration[0]=sc.nextInt();
+		
 		System.out.println("\nIngrese los segundos");
-		int seg=sc.nextInt();
-		duration[1]=seg;
+		duration[1]=sc.nextInt();
+		
+		
 
 		sc.nextLine();
 		String genre;
 		boolean control;
 		do{
-			System.out.println("\nIngrese el genero de la cancion (ROCK, HIPHOP, CLASICA, REGGAE, SALSA, METAL)");
+			System.out.println("\n \nIngrese el genero de la cancion (ROCK, HIPHOP, CLASICA, REGGAE, SALSA, METAL)");
 			genre=sc.nextLine().toUpperCase();
 
 			if(genre.equals("ROCK")|| genre.equals("HIPHOP")||genre.equals("CLASICA")||genre.equals("REGGAE")|| genre.equals("SALSA")||genre.equals("METAL")){
@@ -210,14 +211,14 @@ public class Main{
 				case 1:
 				case 3:
 					sc.nextLine();
-					System.out.println("Ingrese el nombre de usuario");
+					System.out.println("\nIngrese el nombre de usuario");
 					String userName=sc.nextLine().toLowerCase();
 					
 					
 					System.out.println("\nIngrese el nombre de la playlist");
 					playName=sc.nextLine();
 					if(option==1){
-						message=mcs.createPlaylist(userName, playName, option);//necesito por parametro a option
+						message=mcs.createPlaylist(userName, playName, option);
 					}
 					else{
 						message=mcs.createPlaylist(userName, playName);
@@ -228,7 +229,7 @@ public class Main{
 				case 2:
 					int numUsers;
 					do{
-						System.out.println("Ingrese el numero de usuarios que van a colaborar en la playlist. MAX 5 usuarios");
+						System.out.println("\nIngrese el numero de usuarios que van a colaborar en la playlist. MAX 5 usuarios");
 						numUsers=sc.nextInt();
 					}while(numUsers<1 ||numUsers>5);
 
@@ -304,8 +305,8 @@ public class Main{
 	public void showPlaylists(){
 		System.out.println("-----------------------------------------------------------");
 		System.out.println("MOSTRAR PLAYLISTS CREADAS \n");
-        //String list=mcs.showPlaylists();
-        //System.out.println(list);
+        String list=mcs.showPlaylists();
+        System.out.println(list);
         System.out.println("-----------------------------------------------------------");
 	}
 	

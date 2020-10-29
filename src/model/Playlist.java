@@ -2,25 +2,25 @@ package model;
 
 public class Playlist{
 
-	private String name;
+	private String title;
 	private int[] duration;
 	private Genre[] genres;
 	private Song[] playlistSongs;
 	
 
-	public Playlist(String name){
-		this.name=name;
+	public Playlist(String title){
+		this.title=title;
 		duration=new int[2];
 		genres=new Genre[6];
 		playlistSongs= new Song[MCS.MAX_SONGS];
 	}
 
-	public String getName(){
-		return name;
+	public String getTitle(){
+		return title;
 	}
 
-	public void setName(String name){
-		this.name=name;
+	public void setTitle(String title){
+		this.title=title;
 	}
 
 	public int[] getDuration(){
@@ -59,6 +59,9 @@ public class Playlist{
 
 	public String durationToString(){
 		String time;
+		if(duration[0]==0 && duration[1]==0){
+			time="00:00";
+		}
 		if(duration[1]<10){
 			time=duration[0]+":0"+duration[1]; 
 		}
@@ -121,10 +124,5 @@ public class Playlist{
 		return message;
 	}
 
-	public void userRated(){
-
-	}
-	public void ratePlaylist(int rateSumx){
-
-	}
+	
 }

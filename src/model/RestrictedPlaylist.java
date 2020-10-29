@@ -12,6 +12,14 @@ public class RestrictedPlaylist extends Playlist{
 		return owners;
 	}
 
+	public String getOwners(){
+		String ownersPlay="";
+		for(int i=0; i<owners.length; i++){
+			ownersPlay+="- "+owners[i].getUserName()+" ";
+		}
+		return ownersPlay;
+	}
+
 	public String addSongToPlaylist(User userx, Song songx){
 		String message="";
 		boolean control=false;

@@ -172,7 +172,7 @@ public class MCS{
 		boolean found= false;
 		Playlist playlistx=null;
 		for(int i=0; i<playlists.length && !found; i++){
-			if(playlists[i]!=null && playlists[i].getName().equalsIgnoreCase(playlistName)){
+			if(playlists[i]!=null && playlists[i].getTitle().equalsIgnoreCase(playlistName)){
 				playlistx=playlists[i];
 				found=true;
 			}
@@ -343,8 +343,8 @@ public class MCS{
 		}
 		if(allExist){
 			if(playlistx instanceof PublicPlaylist){
-				playlistx.userRated();
-				playlistx.ratePlaylist(rate);
+				((PublicPlaylist)playlistx).userRated();
+				((PublicPlaylist)playlistx).ratePlaylist(rate);
 				message+="Se ha guardado la calificacion :)";
 
 			}
@@ -356,6 +356,46 @@ public class MCS{
 
 		return message;
 
+	}
+
+	public String showPlaylists(){
+		String playlistx="";
+		boolean control=false;
+		for(int i=0; i<playlists.length && !control; i++){
+			if(playlists[i]!=null){
+				playlistx+="**************  Playlist **************\n"+
+				"**  Title: "+playlists[i].getTitle()+"\n"+
+				"**  Duration: "+ playlists[i].durationToString()+"\n"+
+				"**  Genre: "+playlists[i].genreToString()+"\n";
+				
+				if(playlists[i] instanceof PrivatePlaylist){
+					playlistx+="**  Owner: "+((PrivatePlaylist)playlists[i]).getOwner()+"\n \n";
+				}
+
+				if(playlists[i] instanceof PublicPlaylist){
+					double rate=((PublicPlaylist)playlists[i]).getRate();
+					if(rate!=0){
+						playlistx+="**  Average Rating: "+((PublicPlaylist)playlists[i]).getRate()+"\n \n";
+					}
+					else{
+						playlistx+="**  Average Rating: -\n \n";
+					}
+
+				}
+
+				if(playlists[i] instanceof RestrictedPlaylist){
+					playlistx+="**  Owner(s): "+((RestrictedPlaylist)playlists[i]).getOwners()+"\n \n";
+				}
+				
+			}
+			else{
+				control=true;
+			}
+		}
+		if (playlists[0]==null){
+			playlistx="Aun no se han creado playlists";
+		}
+		return playlistx;
 	}
 	
 }

@@ -14,7 +14,7 @@ public class PublicPlaylist extends Playlist{
 
 	public void ratePlaylist(int rateSumx){
 		rateSum+=rateSumx;
-		rate=rateSum/quantityUsers;
+		rate=(double)rateSum/(double)quantityUsers;
 
 	}
 
@@ -45,18 +45,6 @@ public class PublicPlaylist extends Playlist{
 
 	public void userRated(){
 		quantityUsers++;
-	}
-	/*
-	
-
-	public double calculateRate(){
-
-
-	}
-	*/
-
-	public void showRate(){
-		
 	}
 
 }

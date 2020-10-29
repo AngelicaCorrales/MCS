@@ -7,7 +7,7 @@ public class User{
 	private int age;
 	private Category category;
 	private int numSongs;
-	//relacion con playlist
+	
 
 	public User(String userName, String password, int age){
 		this.userName=userName;
