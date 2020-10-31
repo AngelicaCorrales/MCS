@@ -36,5 +36,10 @@ public class RestrictedPlaylist extends Playlist{
 		return message;
 	}//end addSongToPlaylist
 
+	public String toString(){
+		return super.toString()+"**  Owner(s): "+getOwners()+"\n \n";
+						
+	}
+
 	
 }//end class

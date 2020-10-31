@@ -1,6 +1,6 @@
 package model;
 
-public class Playlist{
+public abstract class Playlist{
 	//attributes
 	private String title;
 	private int[] duration;
@@ -130,6 +130,13 @@ public class Playlist{
 		}
 		return message;
 	}//end addSongToPlaylist
+
+	public String toString(){
+		return "**************  Playlist **************\n"+
+				"**  Title: "+title+"\n"+
+				"**  Duration: "+ durationToString()+"\n"+
+				"**  Genre: "+genreToString()+"\n";
+	}
 
 	
 }//end class

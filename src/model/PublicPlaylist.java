@@ -47,4 +47,17 @@ public class PublicPlaylist extends Playlist{
 		quantityUsers++;
 	}//end userRated
 
+	public String toString(){
+		String list=super.toString();
+		if(rate!=0){
+			list+="**  Average Rating: "+rate+"\n \n";
+		}
+		else{
+			list+="**  Average Rating: -\n \n";
+		}
+		return list;
+				
+				
+	}
+
 }//end class

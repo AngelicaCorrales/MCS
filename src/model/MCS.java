@@ -365,29 +365,7 @@ public class MCS{
 		boolean control=false;
 		for(int i=0; i<playlists.length && !control; i++){
 			if(playlists[i]!=null){
-				playlistx+="**************  Playlist **************\n"+
-				"**  Title: "+playlists[i].getTitle()+"\n"+
-				"**  Duration: "+ playlists[i].durationToString()+"\n"+
-				"**  Genre: "+playlists[i].genreToString()+"\n";
-				
-				if(playlists[i] instanceof PrivatePlaylist){
-					playlistx+="**  Owner: "+((PrivatePlaylist)playlists[i]).getOwner()+"\n \n";
-				}
-
-				if(playlists[i] instanceof PublicPlaylist){
-					double rate=((PublicPlaylist)playlists[i]).getRate();
-					if(rate!=0){
-						playlistx+="**  Average Rating: "+((PublicPlaylist)playlists[i]).getRate()+"\n \n";
-					}
-					else{
-						playlistx+="**  Average Rating: -\n \n";
-					}
-
-				}
-
-				if(playlists[i] instanceof RestrictedPlaylist){
-					playlistx+="**  Owner(s): "+((RestrictedPlaylist)playlists[i]).getOwners()+"\n \n";
-				}
+				playlistx+=playlists[i].toString();
 				
 			}
 			else{

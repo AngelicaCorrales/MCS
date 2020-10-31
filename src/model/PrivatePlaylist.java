@@ -13,10 +13,7 @@ public class PrivatePlaylist extends Playlist{
 		return owner;
 	}//end
 	
-	public String getOwner(){
-		return owner.getUserName();
-	}//end getOwner
-
+	
 	public String addSongToPlaylist(User userx, Song songx){
 		String message="";
 		
@@ -29,4 +26,11 @@ public class PrivatePlaylist extends Playlist{
 
 		return message;
 	}//end addSongToPlaylist
+
+	public String toString(){
+		return super.toString()+"**  Owner: "+owner.getUserName()+"\n \n";
+				
+				
+	}
+
 }//end class
