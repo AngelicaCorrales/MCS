@@ -12,7 +12,7 @@ public abstract class Playlist{
 
 	public Playlist(String title){
 		this.title=title;
-		duration=new int[2];
+		duration=new int[3];
 		genres=new Genre[6];
 		playlistSongs= new Song[MCS.MAX_SONGS];
 	}//end constructor
@@ -53,23 +53,44 @@ public abstract class Playlist{
 		duration[0]+=songx.getDuration()[0];
 		duration[1]+=songx.getDuration()[1];
 
-		if(duration[1]>=60){
-			duration[0]+=duration[1]/60;
-			duration[1]=duration[1]%60;
-		}
+		
+		duration[0]+=duration[1]/60;
+		duration[1]=duration[1]%60;
+
+		duration[2]+=duration[0]/60;
+		duration[0]=duration[0]%60;
+		
 	}//end updateDuration
 
 	public String durationToString(){
 		String time;
-		if(duration[0]==0 && duration[1]==0){
-			time="00:00";
-		}
-		if(duration[1]<10){
-			time=duration[0]+":0"+duration[1]; 
+		String hour="";
+		String min="";
+		String sec="";
+
+		if(duration[0]<10){
+			min="0"+duration[0]; 
 		}
 		else{
-			time=duration[0]+":"+duration[1]; 
+			min=""+duration[0];
 		}
+
+		if(duration[1]<10){
+			sec="0"+duration[1]; 
+		}
+
+		else{
+			sec=""+duration[1];
+		}
+
+		if(duration[2]<10){
+			hour="0"+duration[2]; 
+		}
+		else{
+			hour=""+duration[2];
+		}
+
+		time=hour+":"+min+":"+sec;
 		
 		
 		return time;
