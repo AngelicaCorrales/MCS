@@ -12,6 +12,10 @@ public class RestrictedPlaylist extends Playlist{
 		return owners;
 	}//end
 
+	public void setUser(User[] owners){
+		this.owners=owners;
+	}//end
+
 	public String getOwners(){
 		String ownersPlay="";
 		for(int i=0; i<owners.length; i++){

@@ -13,6 +13,9 @@ public class PrivatePlaylist extends Playlist{
 		return owner;
 	}//end
 	
+	public void setUser(User owner){
+		this.owner=owner;
+	}//end
 	
 	public String addSongToPlaylist(User userx, Song songx){
 		String message="";
