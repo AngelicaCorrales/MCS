@@ -1,6 +1,10 @@
 package model;
 
 public abstract class Playlist{
+	//constants
+	public final static int MIN_SEC_HOUR=3;
+	public final static int MAX_GENRES=6;
+
 	//attributes
 	private String title;
 	private int[] duration;
@@ -12,8 +16,8 @@ public abstract class Playlist{
 
 	public Playlist(String title){
 		this.title=title;
-		duration=new int[3];
-		genres=new Genre[6];
+		duration=new int[MIN_SEC_HOUR];
+		genres=new Genre[MAX_GENRES];
 		playlistSongs= new Song[MCS.MAX_SONGS];
 	}//end constructor
 

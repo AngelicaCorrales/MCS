@@ -2,6 +2,11 @@ package model;
 
 public class User{
 
+	//constants
+	public final static int NEWBIE_TOP=3;
+	public final static int LITTLE_CONTRIBUTOR_TOP=10;
+	public final static int MILD_CONTRIBUTOR_TOP=30;
+
 	//relationship
 	private Category category;
 
@@ -55,14 +60,14 @@ public class User{
 
 	public void updateUserCategory(){
 		addedSong();
-		if(numSongs<3){ 
+		if(numSongs<NEWBIE_TOP){ 
 			setCategory(Category.NEWBIE);
 		}
 
-		else if(numSongs<10){
+		else if(numSongs<LITTLE_CONTRIBUTOR_TOP){
 			setCategory(Category.LITTLE_CONTRIBUTOR);
 		}
-		else if(numSongs<30){
+		else if(numSongs<MILD_CONTRIBUTOR_TOP){
 			setCategory(Category.MILD_CONTRIBUTOR);
 		}
 		else{
