@@ -24,11 +24,11 @@ public class MCS{
 		this.users=users;
 	}//end
 
-	public Song[] getSongs(){
+	public Song[] getPoolSongs(){
 		return poolSongs;
 	}//end
 
-	public void setSongs(Song[] poolSongs){
+	public void setPoolSongs(Song[] poolSongs){
 		this.poolSongs=poolSongs;
 	}//end
 

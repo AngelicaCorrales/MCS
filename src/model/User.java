@@ -46,7 +46,7 @@ public class User{
 		return age;
 	}//end
 
-	public void setUserName(int age){
+	public void setAge(int age){
 		this.age=age;
 	}
 
@@ -56,6 +56,14 @@ public class User{
 
 	public void setCategory(Category category){
 		this.category=category;
+	}//end
+
+	public int getNumSongs(){
+		return numSongs;
+	}//end
+
+	public void setNumSongs(int numSongs){
+		this.numSongs=numSongs;
 	}//end
 
 	public void updateUserCategory(){
@@ -75,10 +83,7 @@ public class User{
 		}
 	}//end updateUserCategory
 
-	public int getNumSongs(){
-		return numSongs;
-	}//end
-
+	
 	public void addedSong(){
 		numSongs++;
 	}//end addedSong

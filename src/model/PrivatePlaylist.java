@@ -9,11 +9,11 @@ public class PrivatePlaylist extends Playlist{
 
 	}//end constructor
 
-	public User getUser(){
+	public User getOwner(){
 		return owner;
 	}//end
 	
-	public void setUser(User owner){
+	public void setOwner(User owner){
 		this.owner=owner;
 	}//end
 	

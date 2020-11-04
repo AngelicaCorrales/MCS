@@ -12,8 +12,8 @@ public class PublicPlaylist extends Playlist{
 		rate=0;
 	}//end constructor
 
-	public void ratePlaylist(int rateSumx){
-		rateSum+=rateSumx;
+	public void ratePlaylist(int ratex){
+		rateSum+=ratex;
 		rate=(double)rateSum/(double)quantityUsers;
 
 	}//end ratePlaylist

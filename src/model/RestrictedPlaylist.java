@@ -8,15 +8,15 @@ public class RestrictedPlaylist extends Playlist{
 		this.owners=owners;
 	}//end constructor
 
-	public User[] getUser(){
+	public User[] getOwners(){
 		return owners;
 	}//end
 
-	public void setUser(User[] owners){
+	public void setOwners(User[] owners){
 		this.owners=owners;
 	}//end
 
-	public String getOwners(){
+	public String getOwnersNames(){
 		String ownersPlay="";
 		for(int i=0; i<owners.length; i++){
 			ownersPlay+="- "+owners[i].getUserName()+" ";
@@ -41,7 +41,7 @@ public class RestrictedPlaylist extends Playlist{
 	}//end addSongToPlaylist
 
 	public String toString(){
-		return super.toString()+"**  Owner(s): "+getOwners()+"\n \n";
+		return super.toString()+"**  Owner(s): "+getOwnersNames()+"\n \n";
 						
 	}
 

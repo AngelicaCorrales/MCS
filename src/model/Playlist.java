@@ -45,11 +45,11 @@ public abstract class Playlist{
 		this.genres=genres;
 	}//end
 
-	public Song[] getSongs(){
+	public Song[] getPlaylistSongs(){
 		return playlistSongs;
 	}//end
 
-	public void setSongs(Song[] playlistSongs){
+	public void setPlaylistSongs(Song[] playlistSongs){
 		this.playlistSongs=playlistSongs;
 	}//end
 
