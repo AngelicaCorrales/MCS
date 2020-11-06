@@ -211,7 +211,7 @@ public class Main{
 		System.out.println("-----------------------------------------------------------");
 
 
-	}//end createSong
+	}//end shareSong
 
 	public void showSongs(){
 		System.out.println("-----------------------------------------------------------");
