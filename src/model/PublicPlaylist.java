@@ -8,6 +8,8 @@ public class PublicPlaylist extends Playlist{
 	/**
 	*<b>name:</b> PublicPlaylist <br>
 	*This is the constructor of the class <br>
+	*<b>post:</b> the relationships and attributes of the class have been initialized <br>
+	*@param name Is the title of the playlist. name!=null and name!=""<br>
 	*/
 	public PublicPlaylist(String name){
 		super(name);
@@ -47,10 +49,22 @@ public class PublicPlaylist extends Playlist{
 		this.rate=rate;
 	}//end
 
+	/**
+	*<b>name:</b> userRated <br>
+	*This method adds one to the quantity of users that rated the playlist<br>
+	*<b>post:</b> quantity of users that rated the playlist has been updated<br>
+	*/
 	public void userRated(){
 		quantityUsers++;
 	}//end userRated
 
+	/**
+	*<b>name:</b> toString <br>
+	*This method return the title, duration, genre and average rating of the playlist on a string<br>
+	*<b>post:</b> the title, duration, genre and average rating of the playlist have been returned<br>
+	*@return a <code>string</code> specifying  list, is the title, duration, genre and average rating of the playlist
+	*/
+	@Override 
 	public String toString(){
 		String list=super.toString();
 		if(rate!=0){

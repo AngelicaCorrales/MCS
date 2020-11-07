@@ -16,6 +16,8 @@ public abstract class Playlist{
 	/**
 	*<b>name:</b> Playlist <br>
 	*This is the constructor of the class <br>
+	*<b>post:</b> the relationships and attributes of the class have been initialized <br>
+	*@param title Is the title of the playlist. title!=null and title!=""<br>
 	*/
 	public Playlist(String title){
 		this.title=title;
@@ -56,6 +58,12 @@ public abstract class Playlist{
 		this.playlistSongs=playlistSongs;
 	}//end
 
+
+	/**
+	*<b>name:</b> updateDuration <br>
+	*This method updates the duration of the playlist<br>
+	*<b>post:</b> the duration has been updated<br>
+	*/
 	public void updateDuration(Song songx){
 		duration[0]+=songx.getDuration()[0];
 		duration[1]+=songx.getDuration()[1];
@@ -69,6 +77,12 @@ public abstract class Playlist{
 		
 	}//end updateDuration
 
+	/**
+	*<b>name:</b> durationToString <br>
+	*This method turns the durartion of the playlist to a string<br>
+	*<b>post:</b> the duration has been turned to string<br>
+	*@return a <code>string</code> specifying time, the duration of the playlist turned to string 
+	*/
 	public String durationToString(){
 		String time;
 		String hour="";
@@ -103,6 +117,11 @@ public abstract class Playlist{
 		return time;
 	}//enddurationToString
 
+	/**
+	*<b>name:</b> updateGenre <br>
+	*This method updates the genres of the playlist<br>
+	*<b>post:</b> the genres has been updated<br>
+	*/
 	public void updateGenre(Song songx){
 		boolean same=false;
 		boolean exit=false;
@@ -122,6 +141,12 @@ public abstract class Playlist{
 		}
 	}//end updateGenre
 
+	/**
+	*<b>name:</b> genreToString <br>
+	*This method turns the genre to a string<br>
+	*<b>post:</b> the genre has been turned to string<br>
+	*@return a <code>string</code> specifying genrex, the genre of the playlist turned to string 
+	*/
 	public String genreToString(){
 		String genrex="";
 		for(int i=0; i<genres.length; i++){
@@ -136,6 +161,14 @@ public abstract class Playlist{
 		return genrex;
 	}//end genreToString
 
+	/**
+	*<b>name:</b> addSongToPlaylist <br>
+	*This method can add a song to a playlist<br>
+	*<b>post:</b> the song may have been added to the playlist<br>
+	*@param userx Is the user. user!=null<br>
+	*@param songx Is the song. song!=null<br>
+	*@return a <code>string</code> specifying message, the message if the song has been added or not
+	*/
 	public String addSongToPlaylist(User userx, Song songx){
 		String message="";
 		boolean control=false;
@@ -159,6 +192,12 @@ public abstract class Playlist{
 		return message;
 	}//end addSongToPlaylist
 
+	/**
+	*<b>name:</b> toString <br>
+	*This method return the title, duration and genre of the playlist on a string<br>
+	*<b>post:</b> the title, duration and genre of the playlist have been returned<br>
+	*@return a <code>string</code> specifying the title, duration and genre of the playlist
+	*/
 	public String toString(){
 		return "**************  Playlist **************\n"+
 				"**  Title: "+title+"\n"+
