@@ -93,7 +93,7 @@ public class Song{
 	*<b>name:</b> getDuration <br>
 	*This method gets the array of the duration of the song <br>
 	*<b>post:</b> the duration of the song has been gotten <br>
-	*@return an array of <code>integer</code> specifying duration, the duration of the song 
+	*@return an array of <code>integer</code> specifying duration, the duration of the song. duration[0] is the minutes, duration[1] is the seconds
 	*/
 	public int[] getDuration(){
 		return duration;
@@ -103,7 +103,7 @@ public class Song{
 	*<b>name:</b> setDuration<br>
 	*This method sets the duration of the song <br>
 	*<b>post:</b> the duration of the song has been set <br>
-	*@param duration Is the array of theduration of the song. duration!=null<br>
+	*@param duration Is the array of the duration of the song. duration!=null. duration[0] is the minutes, duration[1] is the seconds<br>
 	*/
 	public void setDuration(int[] duration){
 		this.duration=duration;

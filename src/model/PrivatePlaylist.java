@@ -16,10 +16,22 @@ public class PrivatePlaylist extends Playlist{
 
 	}//end constructor
 
+	/**
+	*<b>name:</b> getOwners <br>
+	*This method gets the owner of the playlist <br>
+	*<b>post:</b> the owner has been gotten <br>
+	*@return a <code>User</code> specifying owner, the owner of the playlist
+	*/
 	public User getOwner(){
 		return owner;
 	}//end
 	
+	/**
+	*<b>name:</b> setOwners <br>
+	*This method sets the owner of the playlist <br>
+	*<b>post:</b> the owner has been set <br>
+	* @param owner Is the owner of the playlist. 
+	*/
 	public void setOwner(User owner){
 		this.owner=owner;
 	}//end

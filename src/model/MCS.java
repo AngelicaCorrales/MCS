@@ -168,7 +168,7 @@ public class MCS{
 	*@param songTitle Is title of the song. songTitle!=null and songTitle!=""<br>
 	*@param artist Is the artist of the song. artist!=null and artist!=""<br>
 	*@param date Is the release date of the song. date!=null and date!=""<br>
-	*@param duration Is the array of the duration of the song. duration!=null<br>
+	*@param duration Is the array of the duration of the song. duration!=null. duration[0] is the minutes, duration[1] is the seconds<br>
 	*@param genre Is the genre of the song. genre!=null and genre!=""<br>
 	*@return a <code>string</code> specifying message, the message if the song has been added or not
 	*/

@@ -15,10 +15,22 @@ public class RestrictedPlaylist extends Playlist{
 		this.owners=owners;
 	}//end constructor
 
+	/**
+	*<b>name:</b> getOwners <br>
+	*This method gets the array of owners of the playlist <br>
+	*<b>post:</b> the array of owners has been gotten <br>
+	*@return an array of <code>User</code> specifying owners, the owners of the playlist
+	*/
 	public User[] getOwners(){
 		return owners;
 	}//end
 
+	/**
+	*<b>name:</b> setOwners <br>
+	*This method sets the array of owners of the playlist <br>
+	*<b>post:</b> the array of owners has been set <br>
+	* @param owners Is an array with the owners of the playlist. 
+	*/
 	public void setOwners(User[] owners){
 		this.owners=owners;
 	}//end

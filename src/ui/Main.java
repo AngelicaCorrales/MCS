@@ -51,6 +51,7 @@ public class Main{
 	*<b>name:</b> chosenOption <br>
 	*This method does an action depending on the option chosen<br>
 	*<b>post:</b> the action has been done<br>
+	*@param op Is the option chosen. op!=null<br>
 	*/
 	public void chosenOption(int op) {
 		
@@ -415,7 +416,7 @@ public class Main{
 	/**
 	*<b>name:</b> createMCS <br>
 	*This method creates an object from the MCS<br>
-	*<b>post:</b> the MCS object has been created <br>
+	*<b>post:</b> the MCS object has been instantiated <br>
 	*/
 	public void createMCS(){
 		System.out.println(""+
