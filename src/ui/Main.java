@@ -6,6 +6,11 @@ public class Main{
 	private MCS mcs;
 	private Scanner sc;
 
+	/**
+	*<b>name:</b> Main <br>
+	*This is the constructor of the class <br>
+	*<b>post:</b> the relationships of the class have been initialized <br>
+	*/
 	public Main(){
 		sc= new Scanner(System.in);
 		createMCS();
@@ -21,6 +26,12 @@ public class Main{
 		
 	}// end main
 
+	/**
+	*<b>name:</b> showMenu <br>
+	*This method shows the menu with the options that the user can choose <br>
+	*<b>post:</b> the menu has been shown and the option chosen<br>
+	*@return an <code>integer</code>  specifying option, the option chosen
+	*/
 	public int showMenu(){
 		System.out.println("Seleccione una opcion:\n"+
 				"(1) Registrar usuario\n"+
@@ -36,7 +47,11 @@ public class Main{
 		return option;
 	}//end showMenu
 
-	
+	/**
+	*<b>name:</b> chosenOption <br>
+	*This method does an action depending on the option chosen<br>
+	*<b>post:</b> the action has been done<br>
+	*/
 	public void chosenOption(int op) {
 		
 		switch(op) {
@@ -75,6 +90,11 @@ public class Main{
 		}
 	}//end chosenOption
 
+	/**
+	*<b>name:</b> registerUser <br>
+	*This method registers an user<br>
+	*<b>post:</b> the user has been registered<br>
+	*/
 	public void registerUser(){
 		sc.nextLine();
 		System.out.println("-----------------------------------------------------------");
@@ -112,6 +132,11 @@ public class Main{
 		System.out.println("-----------------------------------------------------------");
 	}// end registerUser
 
+	/**
+	*<b>name:</b> showRegisteredUsers <br>
+	*This method shows the registered users<br>
+	*<b>post:</b> the registered users have been shown<br>
+	*/
 	public void showRegisteredUsers(){
 		System.out.println("-----------------------------------------------------------");
 		System.out.println("MOSTRAR USUARIOS REGISTRADOS \n");
@@ -121,6 +146,11 @@ public class Main{
 
 	}//end showRegisteredUsers
 
+	/**
+	*<b>name:</b> shareSong <br>
+	*This method allows the user to share a song to the pool songs<br>
+	*<b>post:</b> the song has been added to the pool songs<br>
+	*/
 	public void shareSong(){
 		sc.nextLine();
 		String message;
@@ -213,6 +243,12 @@ public class Main{
 
 	}//end shareSong
 
+
+	/**
+	*<b>name:</b> showSongs <br>
+	*This method shows the songs added to the pool songs<br>
+	*<b>post:</b> the song has been added to the pool songs<br>
+	*/
 	public void showSongs(){
 		System.out.println("-----------------------------------------------------------");
 		System.out.println("MOSTRAR CANCIONES EN EL POOL DE CANCIONES COMPARTIDAS \n");
@@ -222,7 +258,11 @@ public class Main{
 
 	}//end showSongs
 	
-
+	/**
+	*<b>name:</b> createPlaylist <br>
+	*This method allows the user to create a playlist<br>
+	*<b>post:</b> the playlist has been created<br>
+	*/
 	public void createPlaylist(){
 		
 		String message="";
@@ -293,7 +333,12 @@ public class Main{
 		System.out.println(message);
 		System.out.println("-----------------------------------------------------------");
 	}//end createPlaylist
-		
+	
+	/**
+	*<b>name:</b> addSongToPlaylist <br>
+	*This method allows the user to add a song to a playlist<br>
+	*<b>post:</b> the song has been added to the playlist<br>
+	*/
 	public void addSongToPlaylist(){
 		sc.nextLine();
 		String message;
@@ -320,6 +365,11 @@ public class Main{
 	
 	}//end addSongToPlaylist
 
+	/**
+	*<b>name:</b> ratePlaylist <br>
+	*This method allows the user to rate a public playlist<br>
+	*<b>post:</b> the playlist has been rated<br>
+	*/
 	public void ratePlaylist(){
 		sc.nextLine();
 		String message;
@@ -349,6 +399,11 @@ public class Main{
 
 	}//end ratePlaylist
 	
+	/**
+	*<b>name:</b> showPlaylists <br>
+	*This method shows the playlists that have been created<br>
+	*<b>post:</b> the playlists have been shown<br>
+	*/
 	public void showPlaylists(){
 		System.out.println("-----------------------------------------------------------");
 		System.out.println("MOSTRAR PLAYLISTS CREADAS \n");
@@ -357,7 +412,11 @@ public class Main{
         System.out.println("-----------------------------------------------------------");
 	}//end showPlaylist
 	
-
+	/**
+	*<b>name:</b> createMCS <br>
+	*This method creates an object from the MCS<br>
+	*<b>post:</b> the MCS object has been created <br>
+	*/
 	public void createMCS(){
 		System.out.println(""+
 

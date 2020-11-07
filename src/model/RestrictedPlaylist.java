@@ -3,6 +3,10 @@ public class RestrictedPlaylist extends Playlist{
 	//relationship
 	User[] owners;
 
+	/**
+	*<b>name:</b> RestrictedPlaylist <br>
+	*This is the constructor of the class <br>
+	*/
 	public RestrictedPlaylist(User[] owners, String name){
 		super(name);
 		this.owners=owners;

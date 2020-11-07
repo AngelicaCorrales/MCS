@@ -3,6 +3,10 @@ public class PrivatePlaylist extends Playlist{
 	//relationship
 	private User owner;
 
+	/**
+	*<b>name:</b> PrivatePlaylist <br>
+	*This is the constructor of the class <br>
+	*/
 	public PrivatePlaylist(User owner, String name){
 		super(name);
 		this.owner=owner;

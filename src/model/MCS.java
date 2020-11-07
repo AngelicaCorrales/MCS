@@ -10,36 +10,86 @@ public class MCS{
 	private Song[] poolSongs;
 	private Playlist[] playlists;
 
+	/**
+	*<b>name:</b> MCS <br>
+	*This is the constructor of the class <br>
+	*<b>post:</b> the relationships of the class have been initialized
+	*/
 	public MCS(){
 		users= new User[MAX_USERS];
 		poolSongs= new Song[MAX_SONGS];
 		playlists= new Playlist[MAX_PLAYLISTS];
 	}//end constructor
 
+	/**
+	*<b>name:</b> getUsers <br>
+	*This method gets the array of users <br>
+	*<b>post:</b> the array of users has been gotten <br>
+	*@return an array of <code>User</code> specifying users, the users of MCS
+	*/
 	public User[] getUsers(){
 		return users;
 	}//end 
 
+	/**
+	*<b>name:</b> setUsers <br>
+	*This method sets the array of users <br>
+	*<b>post:</b> the array of users has been set <br>
+	* @param users is an array with the users. 
+	*/
 	public void setUsers(User[] users){
 		this.users=users;
 	}//end
 
+	/**
+	*<b>name:</b> getPoolSongs <br>
+	*This method gets the array of pool songs <br>
+	*<b>post:</b> the array of pool songs has been gotten <br>
+	*@return an array of <code>Song</code> specifying poolSongs, the songs of the pool
+	*/
 	public Song[] getPoolSongs(){
 		return poolSongs;
 	}//end
 
+	/**
+	*<b>name:</b> setPoolSongs <br>
+	*This method sets the array of pool songs <br>
+	*<b>post:</b> the array of pool songs has been set <br>
+	* @param poolSongs Is an array with the pool songs. 
+	*/
 	public void setPoolSongs(Song[] poolSongs){
 		this.poolSongs=poolSongs;
 	}//end
 
+	/**
+	*<b>name:</b> getPlaylists <br>
+	*This method gets the array of playlists <br>
+	*<b>post:</b> the array of playlists has been gotten <br>
+	*@return an array of <code>Playlist</code> specifying playlists, the playlist of MCS
+	*/
 	public Playlist[] getPlaylists(){
 		return playlists;
 	}//end
 
+	/**
+	*<b>name:</b> setPlaylists <br>
+	*This method sets the array of playlists <br>
+	*<b>post:</b> the array of playlists has been set <br>
+	* @param playlists Is an array with the playlists. 
+	*/
 	public void setPlaylists(Playlist[] playlists){
 		this.playlists=playlists;
 	}//end
 
+	/**
+	*<b>name:</b> createUser <br>
+	*This method can create an user<br>
+	*<b>post:</b> the user may have been created<br>
+	*@param userName Is the name of the user. userName!=null and userName!=""<br>
+	*@param password Is the password of the user. password!=null and password!=""<br>
+	*@param age Is the age of the user. age!=null, age greater than 0  and age less than 131<br>
+	*@return a <code>string</code> specifying message, the message if the user has been created or not
+	*/
 	public String createUser(String userName, String password, int age){
 		String message="El usuario ha sido registrado exitosamente :D";
 		boolean exit=false;
@@ -63,6 +113,13 @@ public class MCS{
 
 	}//end createUser
 	
+	/**
+	*<b>name:</b> findUser <br>
+	*This method finds an user<br>
+	*<b>post:</b> the user may have been found<br>
+	*@param userName Is the name of the user. userName!=null and userName!=""<br>
+	*@return a <code>User</code> specifying obj, the user if it has been found or not
+	*/
 	public User findUser(String userName){
 		boolean found= false;
 		User obj=null;
@@ -76,6 +133,12 @@ public class MCS{
 	
 	}//end findUser
 
+	/**
+	*<b>name:</b> showUsers <br>
+	*This method shows the users that have been created<br>
+	*<b>post:</b> the users have been shown<br>
+	*@return a <code>string</code> specifying userList, the list of created users
+	*/
 	public String showUsers(){
 		String userList="";
 		boolean control=false;
@@ -97,6 +160,18 @@ public class MCS{
 		return userList;
 	}//end showUsers
 
+	/**
+	*<b>name:</b> addSong <br>
+	*This method can add a song to the pool songs<br>
+	*<b>post:</b> the song may have been added<br>
+	*@param userName Is the name of the user. userName!=null and userName!=""<br>
+	*@param songTitle Is title of the song. songTitle!=null and songTitle!=""<br>
+	*@param artist Is the artist of the song. artist!=null and artist!=""<br>
+	*@param date Is the release date of the song. date!=null and date!=""<br>
+	*@param duration Is the array of the duration of the song. duration!=null<br>
+	*@param genre Is the genre of the song. genre!=null and genre!=""<br>
+	*@return a <code>string</code> specifying message, the message if the song has been added or not
+	*/
 	public String addSong(String userName, String songTitle, String artist, String date, int[] duration, String genre){
 		String message="La cancion ha sido agregada al pool de canciones :D";
 		boolean exit=false;
@@ -108,7 +183,7 @@ public class MCS{
 					if(poolSongs[i]==null){
 						poolSongs[i]= new Song(songTitle, artist, date, duration, genre);
 						exit=true;
-						userAddedSong(userName);
+						user.updateUserCategory();;
 					}
 				}
 				if(!exit){
@@ -127,6 +202,13 @@ public class MCS{
 
 	}//end addSong
 
+	/**
+	*<b>name:</b> findSong <br>
+	*This method finds a song<br>
+	*<b>post:</b> the song may have been found<br>
+	*@param songTitle Is the title of the song. songTitle!=null and songTitle!=""<br>
+	*@return a <code>Song</code> specifying song, the song if it has been found or not
+	*/
 	public Song findSong(String songTitle){
 		boolean found= false;
 		Song song=null;
@@ -141,11 +223,12 @@ public class MCS{
 	
 	}//end findSong
 
-	public void userAddedSong(String userName){
-		User userx=findUser(userName);
-		userx.updateUserCategory();
-	}//end userAddedSong
-
+	/**
+	*<b>name:</b> showPoolSongs <br>
+	*This method shows the songs that have been created<br>
+	*<b>post:</b> the songs have been shown<br>
+	*@return a <code>string</code> specifying poolList, the list of created songs
+	*/
 	public String showPoolSongs(){
 		String poolList="";
 		boolean control=false;
@@ -169,7 +252,13 @@ public class MCS{
 
 	}//end showPoolSongs
 
-
+	/**
+	*<b>name:</b> findPlaylist <br>
+	*This method finds a playlist<br>
+	*<b>post:</b> the playlist may have been found<br>
+	*@param playlistName Is the name of the playlist. playlistName!=null and playlistName!=""<br>
+	*@return a <code>Playlist</code> specifying playlistx, the playlist if it has been found or not
+	*/
 	public Playlist findPlaylist(String playlistName){
 		boolean found= false;
 		Playlist playlistx=null;
@@ -183,6 +272,15 @@ public class MCS{
 	
 	}//end findPlaylist
 
+	/**
+	*<b>name:</b> createPlaylist <br>
+	*This method can create a private playlist<br>
+	*<b>post:</b> the playlist may have been created<br>
+	*@param userName Is the name of the user. userName!=null and userName!=""<br>
+	*@param playlistName Is the name of the playlist. playlistName!=null and playlistName!=""<br>
+	*@param option Is the option chosen. option!=null, option==1<br>
+	*@return a <code>string</code> specifying message, the message if the playlist has been created or not
+	*/
 	public String createPlaylist(String userName, String playlistName, int option){
 		//private playlist
 		String message="La playlist ha sido creada exitosamente :D";
@@ -213,6 +311,14 @@ public class MCS{
 		
 	}//end createPlaylist
 
+	/**
+	*<b>name:</b> createPlaylist <br>
+	*This method can create a public playlist<br>
+	*<b>post:</b> the playlist may have been created<br>
+	*@param userName Is the name of the user. userName!=null and userName!=""<br>
+	*@param playlistName Is the name of the playlist. playlistName!=null and playlistName!=""<br>
+	*@return a <code>string</code> specifying message, the message if the playlist has been created or not
+	*/
 	public String createPlaylist(String userName, String playlistName){
 		//public playlist
 		String message="La playlist ha sido creada exitosamente :D";
@@ -243,6 +349,14 @@ public class MCS{
 		
 	}//end createPlaylist
 
+	/**
+	*<b>name:</b> createPlaylist <br>
+	*This method can create a restricted playlist<br>
+	*<b>post:</b> the playlist may have been created<br>
+	*@param userNames Is the array of the name of users. Each name is different from the other. userNames!=null<br>
+	*@param playlistName Is the name of the playlist. playlistName!=null and playlistName!=""<br>
+	*@return a <code>string</code> specifying message, the message if the playlist has been created or not
+	*/
 	public String createPlaylist(String[] userNames, String playlistName){
 		//restricted playlist
 		String message="La playlist ha sido creada exitosamente";
@@ -295,6 +409,15 @@ public class MCS{
 		
 	}//end createPlaylist
 
+	/**
+	*<b>name:</b> addSongToPlaylist <br>
+	*This method can add a song to a playlist<br>
+	*<b>post:</b> the song may have been added to the playlist<br>
+	*@param userName Is the name of the user. userName!=null and userName!=""<br>
+	*@param playlistName Is the name of the playlist. playlistName!=null and playlistName!=""<br>
+	*@param songName Is the title of the song. songTitle!=null and songTitle!=""<br>
+	*@return a <code>string</code> specifying message, the message if the song has been added or not
+	*/
 	public String addSongToPlaylist( String userName, String playlistName, String songName){
 		String message="";
 		boolean allExist=true;
@@ -325,6 +448,15 @@ public class MCS{
 
 	}//end adddSongToPlaylist
 
+	/**
+	*<b>name:</b> ratePlaylist <br>
+	*This method can rate a restricted playlist<br>
+	*<b>post:</b> the playlist may have been rated<br>
+	*@param userName Is the name of the user. userName!=null and userName!=""<br>
+	*@param playlistName Is the name of the playlist. playlistName!=null and playlistName!=""<br>
+	*@param rate Is the rating given by the user. rate!=null, rate greater than 0 and rate less than 6<br>
+	*@return a <code>string</code> specifying message, the message if the playlist has been rated or not
+	*/
 	public String ratePlaylist(String userName, String playlistName, int rate){
 		String message="";
 		boolean allExist=true;
@@ -360,6 +492,12 @@ public class MCS{
 
 	}//end ratePlaylist
 
+	/**
+	*<b>name:</b> showPlaylists <br>
+	*This method shows the playlists that have been created<br>
+	*<b>post:</b> the playlists have been shown<br>
+	*@return a <code>string</code> specifying playlistx, the list of created playlists
+	*/
 	public String showPlaylists(){
 		String playlistx="";
 		boolean control=false;

@@ -5,6 +5,10 @@ public class PublicPlaylist extends Playlist{
 	private int quantityUsers;
 	private double rate;
 
+	/**
+	*<b>name:</b> PublicPlaylist <br>
+	*This is the constructor of the class <br>
+	*/
 	public PublicPlaylist(String name){
 		super(name);
 		rateSum=0;

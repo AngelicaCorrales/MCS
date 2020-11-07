@@ -13,7 +13,10 @@ public abstract class Playlist{
 	private Genre[] genres;
 	private Song[] playlistSongs;
 	
-
+	/**
+	*<b>name:</b> Playlist <br>
+	*This is the constructor of the class <br>
+	*/
 	public Playlist(String title){
 		this.title=title;
 		duration=new int[MIN_SEC_HOUR];
